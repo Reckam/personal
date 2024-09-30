@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Love You</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #95ee92;
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5rem;
+    color: #c2185b;
+    margin-bottom: 20px;
+}
+
+.message {
+    font-size: 1.5rem;
+    color: #880e4f;
+    margin-bottom: 20px;
+}
+
+/* Slider Styles */
+.slider {
+    position: relative;
+    width: 70%;
+    max-width: 700px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slides img {
+    width: 50%;
+    border-radius: 10px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>I Love You, Retha</h1>
+        <p class="message">Every moment with you is magical, and I can't imagine my life without you.</p>
+        
+        <!-- Image Slider Container -->
+        <div class="slider">
+            <div class="slides">
+                <img src="image1.png" alt="Image 1">
+                <img src="image2.png" alt="Image 2">
+            </div>
+        </div>        
+    </div>
+    
+    <script src="script.js">
+        document.addEventListener("DOMContentLoaded", function() {
+    const slides = document.querySelector('.slides');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    const totalImages = document.querySelectorAll('.slides img').length;
+    
+    let currentIndex = 0;
+
+    function updateSliderPosition() {
+        const slideWidth = slides.querySelector('img').clientWidth;
+        slides.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    }
+
+    nextButton.addEventListener('click', function() {
+        currentIndex = (currentIndex + 1) % totalImages;
+        updateSliderPosition();
+    });
+
+    prevButton.addEventListener('click', function() {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        updateSliderPosition();
+    });
+
+    // Handle window resize to adjust the slider position
+    window.addEventListener('resize', updateSliderPosition);
+});
+
+    </script>
+</body>
+</html>
